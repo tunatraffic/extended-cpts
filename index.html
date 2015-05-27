@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Extended CPTs by johnbillion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Extended CPTs</h1>
+      <h2 class="project-tagline">A library which provides extended functionality to WordPress custom post types</h2>
+      <a href="https://github.com/johnbillion/extended-cpts" class="btn">View on GitHub</a>
+      <a href="https://github.com/johnbillion/extended-cpts/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/johnbillion/extended-cpts/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><a href="https://travis-ci.org/johnbillion/extended-cpts"><img src="https://travis-ci.org/johnbillion/extended-cpts.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/johnbillion/extended-cpts"><img src="https://img.shields.io/packagist/v/johnbillion/extended-cpts.svg" alt="Stable Release"></a>
+<a href="https://github.com/johnbillion/extended-cpts/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPL--2.0%2B-red.svg" alt="License"></a></p>
+
+<h1>
+<a id="extended-cpts" class="anchor" href="#extended-cpts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended CPTs</h1>
+
+<p>Extended CPTs is a library which provides extended functionality to WordPress custom post types, allowing developers to quickly build post types without having to write the same code again and again.</p>
+
+<p>See also: <a href="https://github.com/johnbillion/extended-taxos">Extended Taxonomies</a>.</p>
+
+<h2>
+<a id="improved-defaults" class="anchor" href="#improved-defaults" aria-hidden="true"><span class="octicon octicon-link"></span></a>Improved defaults</h2>
+
+<ul>
+<li>Automatically generated labels and post updated messages</li>
+<li>Public post type with admin UI enabled</li>
+<li>Hierarchical with <code>page</code> capability type</li>
+<li>Support post thumbnails</li>
+<li>Optimal admin menu placement</li>
+<li>Remove <code>with_front</code> from rewrite rules</li>
+</ul>
+
+<h2>
+<a id="extended-admin-features" class="anchor" href="#extended-admin-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended admin features</h2>
+
+<ul>
+<li>Ridiculously easy custom columns on the post type listing screen:
+
+<ul>
+<li>Columns for post meta, taxonomy terms, featured images, post fields, <a href="https://wordpress.org/plugins/posts-to-posts/">Posts 2 Posts</a> connections, and callback functions</li>
+<li>Sortable columns for post meta, taxonomy terms, and post fields</li>
+<li>User capability restrictions</li>
+<li>Default sort column and sort order</li>
+</ul>
+</li>
+<li>Filter controls on the post type listing screen for filtering by post meta fields and taxonomy terms</li>
+<li>Override the 'Featured Image' and 'Enter title here' text</li>
+<li>Add the post type to the 'At a Glance' section on the dashboard</li>
+<li>Add the post type archive link to the nav menus screen</li>
+</ul>
+
+<h2>
+<a id="extended-front-end-features" class="anchor" href="#extended-front-end-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended front-end features</h2>
+
+<ul>
+<li>Easily specify custom permalink structures
+
+<ul>
+<li>For example <code>reviews/%year%/%month%/%review%/</code>
+</li>
+<li>Supports all relevant rewrite tags including dates and custom taxonomies</li>
+<li>Automatic integration with the <a href="https://wordpress.org/plugins/rewrite-testing/">Rewrite Rule Testing</a> plugin</li>
+</ul>
+</li>
+<li>Easily specify public query vars for filtering by post meta fields</li>
+<li>Override public or private query variables such as <code>posts_per_page</code>, <code>orderby</code>, <code>order</code> and <code>nopaging</code>
+</li>
+<li>Add the post type to the site's main RSS feed</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Need a simple post type with no frills? You can register a post type with a single parameter:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1">register_extended_post_type( <span class="pl-s"><span class="pl-pds">'</span>article<span class="pl-pds">'</span></span> );</span></pre></div>
+
+<p>Try it. You'll have a hierarchical public post type with an admin UI, and all the labels and post updated messages will be automatically generated. Or for a bit more functionality:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1">register_extended_post_type( <span class="pl-s"><span class="pl-pds">'</span>story<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"># Add the post type to the site's main RSS feed:</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>show_in_feed<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">true</span>,</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"># Show all posts on the post type archive:</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>archive<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>nopaging<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">true</span></span>
+<span class="pl-s1">    ),</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"># Add some custom columns to the admin screen:</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>admin_cols<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>featured_image<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>title<span class="pl-pds">'</span></span>          <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Illustration<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>featured_image<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>thumbnail<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ),</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>published<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>title<span class="pl-pds">'</span></span>       <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Published<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>meta_key<span class="pl-pds">'</span></span>    <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>published_date<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>date_format<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>d/m/Y<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ),</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>genre<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>taxonomy<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>genre<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        )</span>
+<span class="pl-s1">    ),</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"># Add a dropdown filter to the admin screen:</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>admin_filters<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>genre<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>taxonomy<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>genre<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        )</span>
+<span class="pl-s1">    )</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">), <span class="pl-c1">array</span>(</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"># Override the base names used for labels:</span></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>singular<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Story<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>plural<span class="pl-pds">'</span></span>   <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Stories<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>slug<span class="pl-pds">'</span></span>     <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>stories<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">) );</span></pre></div>
+
+<p>Bam, we have a 'Stories' post type, with correctly generated labels and post updated messages, three custom columns in the admin area (two of which are sortable), stories added to the main RSS feed, and all stories displayed on the post type archive.</p>
+
+<p>There's quite a bit more you can do. See the wiki for more examples.</p>
+
+<h2>
+<a id="license-gplv2-or-later" class="anchor" href="#license-gplv2-or-later" aria-hidden="true"><span class="octicon octicon-link"></span></a>License: GPLv2 or later</h2>
+
+<p>This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/johnbillion/extended-cpts">Extended CPTs</a> is maintained by <a href="https://github.com/johnbillion">johnbillion</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
