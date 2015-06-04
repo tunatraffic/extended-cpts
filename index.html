@@ -21,7 +21,7 @@
     <section class="main-content">
       <p><a href="https://travis-ci.org/johnbillion/extended-cpts"><img src="https://travis-ci.org/johnbillion/extended-cpts.svg?branch=master" alt="Build Status"></a>
 <a href="https://packagist.org/packages/johnbillion/extended-cpts"><img src="https://img.shields.io/packagist/v/johnbillion/extended-cpts.svg" alt="Stable Release"></a>
-<a href="https://github.com/johnbillion/extended-cpts/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPL--2.0%2B-red.svg" alt="License"></a></p>
+<a href="https://github.com/johnbillion/extended-cpts/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPL_v2%2B-blue.svg" alt="License"></a></p>
 
 <h1>
 <a id="extended-cpts" class="anchor" href="#extended-cpts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended CPTs</h1>
@@ -37,7 +37,7 @@
 <li>Automatically generated labels and post updated messages</li>
 <li>Public post type with admin UI enabled</li>
 <li>Hierarchical with <code>page</code> capability type</li>
-<li>Support post thumbnails</li>
+<li>Support for post thumbnails</li>
 <li>Optimal admin menu placement</li>
 <li>Remove <code>with_front</code> from rewrite rules</li>
 </ul>
@@ -55,7 +55,7 @@
 <li>Default sort column and sort order</li>
 </ul>
 </li>
-<li>Filter controls on the post type listing screen for filtering by post meta fields and taxonomy terms</li>
+<li>Filter controls on the post type listing screen to enable filtering by post meta and taxonomy terms</li>
 <li>Override the 'Featured Image' and 'Enter title here' text</li>
 <li>Add the post type to the 'At a Glance' section on the dashboard</li>
 <li>Add the post type archive link to the nav menus screen</li>
@@ -65,17 +65,18 @@
 <a id="extended-front-end-features" class="anchor" href="#extended-front-end-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended front-end features</h2>
 
 <ul>
-<li>Easily specify custom permalink structures
+<li>Specify a custom permalink structure
 
 <ul>
-<li>For example <code>reviews/%year%/%month%/%review%/</code>
+<li>For example <code>reviews/%year%/%month%/%review%</code>
 </li>
 <li>Supports all relevant rewrite tags including dates and custom taxonomies</li>
 <li>Automatic integration with the <a href="https://wordpress.org/plugins/rewrite-testing/">Rewrite Rule Testing</a> plugin</li>
 </ul>
 </li>
-<li>Easily specify public query vars for filtering by post meta fields</li>
-<li>Override public or private query variables such as <code>posts_per_page</code>, <code>orderby</code>, <code>order</code> and <code>nopaging</code>
+<li>Specify public query vars which enable filtering by post meta</li>
+<li>Specify public query vars which enable sorting by post meta, taxonomy terms, and post fields</li>
+<li>Override public or private query vars such as <code>posts_per_page</code>, <code>orderby</code>, <code>order</code> and <code>nopaging</code>
 </li>
 <li>Add the post type to the site's main RSS feed</li>
 </ul>
@@ -133,7 +134,14 @@
 
 <p>Bam, we have a 'Stories' post type, with correctly generated labels and post updated messages, three custom columns in the admin area (two of which are sortable), stories added to the main RSS feed, and all stories displayed on the post type archive.</p>
 
-<p>There's quite a bit more you can do. See the wiki for more examples.</p>
+<p>There's quite a bit more you can do. <a href="https://github.com/johnbillion/extended-cpts/wiki">See the wiki for more examples</a>.</p>
+
+<h2>
+<a id="contributing-and-testing" class="anchor" href="#contributing-and-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing and Testing</h2>
+
+<p>Please see <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for information on contributing.</p>
+
+<p>Please see <a href="tests/README.md">the tests readme</a> for information on running the unit test suite.</p>
 
 <h2>
 <a id="license-gplv2-or-later" class="anchor" href="#license-gplv2-or-later" aria-hidden="true"><span class="octicon octicon-link"></span></a>License: GPLv2 or later</h2>
